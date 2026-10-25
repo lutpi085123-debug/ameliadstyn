@@ -818,3 +818,20 @@ body {
     top: 41%;
   }
 }
+
+/* Beberapa HP landscape memiliki tinggi CSS viewport di atas 600px.
+   Gunakan ciri layar sentuh dan lebar mobile agar ukuran font kecil tetap
+   diterapkan tanpa memengaruhi tampilan PC. */
+@media (orientation: landscape) and (pointer: coarse) and (max-width: 1024px) {
+  .culture-popup-overlay[data-culture="sumatra"]
+    .culture-popup-description,
+  .culture-popup-overlay[data-culture="jawa-barat"]
+    .culture-popup-description,
+  .culture-popup-overlay[data-culture="bali"] .culture-popup-description,
+  .culture-popup-overlay[data-culture="papua"]
+    .culture-popup-description,
+  .culture-popup-overlay[data-culture="jawa-tengah"]
+    .culture-popup-description {
+    font-size: clamp(0.95rem, 1.3vw, 1.2rem);
+  }
+}
