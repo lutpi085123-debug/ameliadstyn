@@ -412,7 +412,7 @@ body {
   overflow: auto;
   color: #4f2a19;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(0.95rem, 2.2vw, 2rem);
+  font-size: clamp(0.95rem, 1.3vw, 1.2rem);
   font-weight: 700;
   line-height: 1.35;
   text-align: left;
@@ -443,7 +443,7 @@ body {
   width: 39%;
   height: 43%;
   padding: clamp(0.6rem, 1.5vw, 1.5rem);
-  font-size: clamp(2.6rem, 2.2vw, 2rem);
+  font-size: clamp(0.95rem, 1.3vw, 1.2rem);
 }
 
 /* ========================= JAWA BARAT ========================= */
@@ -463,7 +463,7 @@ body {
   width: 41%;
   height: 43%;
   padding: clamp(0.6rem, 1.5vw, 1.5rem);
-  font-size: clamp(2.6rem, 2.2vw, 2rem);
+  font-size: clamp(0.95rem, 1.3vw, 1.2rem);
 }
 
 /* ============================ BALI ============================ */
@@ -482,7 +482,7 @@ body {
   width: 45%;
   height: 46%;
   padding: clamp(0.6rem, 1.5vw, 1.5rem);
-  font-size: clamp(3rem, 2.2vw, 2rem);
+  font-size: clamp(0.95rem, 1.3vw, 1.2rem);
 }
 
 /* ============================ PAPUA =========================== */
@@ -501,7 +501,7 @@ body {
   width: 39%;
   height: 43%;
   padding: clamp(0.6rem, 1.5vw, 1.5rem);
-  font-size: clamp(2.6rem, 2.2vw, 2rem);
+  font-size: clamp(0.95rem, 1.3vw, 1.2rem);
 }
 
 /* ========================= JAWA TENGAH ======================= */
@@ -521,7 +521,7 @@ body {
   width: 50%;
   height: 48%;
   padding: clamp(0.6rem, 1.5vw, 1.5rem);
-  font-size: clamp(3rem, 2.2vw, 2rem);
+  font-size: clamp(0.95rem, 1.3vw, 1.2rem);
 }
 
 .culture-popup-close {
