@@ -695,3 +695,68 @@ body {
     font-size: 0.85rem;
   }
 }
+
+/*
+ * Ponsel landscape memakai layout desktop.
+ *
+ * Di landscape, tinggi viewport ponsel dapat berubah ketika toolbar browser
+ * muncul atau menghilang. Menggunakan svh pada kondisi ini membuat canvas
+ * memiliki tinggi yang berbeda dari area yang benar-benar terlihat dan
+ * menyebabkan artwork serta tombol bergeser. Gunakan dynamic viewport height
+ * dan kembalikan ukuran kontrol ke ukuran desktop agar komposisinya tetap
+ * sama dengan tampilan PC.
+ */
+@media (orientation: landscape) and (max-height: 600px) {
+  .website-screen,
+  .page-view {
+    min-height: 100dvh;
+  }
+
+  .image-stage--opening {
+    width: min(100%, calc(100dvh * 16 / 9));
+  }
+
+  .image-stage--channels,
+  .image-stage--menu {
+    width: min(100%, calc(100dvh * 16 / 9));
+    height: 100dvh;
+  }
+
+  .channel-canvas {
+    width: calc(100dvh * 16 / 9);
+    height: calc(100dvh * 16 / 9 * 2 / 3);
+  }
+
+  .menu-canvas {
+    width: 100%;
+    height: 100dvh;
+  }
+
+  .menu-image {
+    height: min(86dvh, 556px);
+  }
+
+  .culture-menu-artboard {
+    width: calc(100dvh * 16 / 9);
+    height: calc(100dvh * 16 / 9 * 2 / 3);
+  }
+
+  .culture-popup-dialog {
+    width: 100%;
+    height: 100dvh;
+  }
+
+  .fullscreen-button {
+    top: 1rem;
+    left: 1rem;
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .back-button {
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.7rem 1.1rem;
+    font-size: 0.95rem;
+  }
+}
