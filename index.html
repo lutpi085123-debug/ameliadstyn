@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Televisi Budaya Indonesia - Pendidikan Pancasila Kelas IV"
+    />
+    <title>Televisi Budaya Indonesia</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="website-screen">
+      <button
+        class="fullscreen-button"
+        id="fullscreen-button"
+        type="button"
+        aria-label="Masuk ke layar penuh"
+        aria-pressed="false"
+        title="Masuk ke layar penuh"
+      >
+        <svg
+          class="fullscreen-icon fullscreen-icon--expand"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />
+        </svg>
+        <svg
+          class="fullscreen-icon fullscreen-icon--compress"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" />
+        </svg>
+      </button>
+      <section class="page-view page-view--opening" id="opening-view">
+        <div class="image-stage image-stage--opening">
+          <img
+            class="opening-image"
+            src="assets/televisi-budaya.jpeg"
+            alt="Televisi Budaya Indonesia - Jelajah Keragaman Budaya Indonesia"
+          />
+          <button class="start-button" id="start-button" type="button">
+            Mulai
+          </button>
+        </div>
+      </section>
+
+      <section class="page-view page-view--channels" id="channels-view" hidden>
+        <div class="image-stage image-stage--channels">
+          <div class="channel-canvas">
+            <img
+              class="channel-image"
+              src="assets/bg-pilih-kanal.png"
+              alt="Pilih Kanal Budaya - Klik daerah yang ingin kamu jelajahi"
+            />
+            <div class="channel-grid" aria-label="Pilihan kanal budaya">
+              <button
+                class="channel-button"
+                type="button"
+                data-channel="CH 01"
+                data-menu-src="assets/bg-sumatra-barat.png"
+                data-menu-alt="Menu CH 01 Sumatera Barat"
+                data-menu-mode="full"
+                data-menu-layout="culture"
+                data-culture="sumatra"
+                aria-label="Pilih CH 01 Sumatera Barat"
+                aria-pressed="false"
+              >
+                <img
+                  src="assets/menu-sumatra-barat.png"
+                  alt="CH 01 Sumatera Barat"
+                />
+              </button>
+              <button
+                class="channel-button"
+                type="button"
+                data-channel="CH 02"
+                data-menu-src="assets/bg-jawa-barat.png"
+                data-menu-alt="Menu CH 02 Jawa Barat"
+                data-menu-mode="full"
+                data-menu-layout="culture"
+                data-culture="jawa-barat"
+                aria-label="Pilih CH 02 Jawa Barat"
+                aria-pressed="false"
+              >
+                <img
+                  src="assets/menu-jawa-barat.png"
+                  alt="CH 02 Jawa Barat"
+                />
+              </button>
+              <button
+                class="channel-button"
+                type="button"
+                data-channel="CH 03"
+                data-menu-src="assets/bg-bali.png"
+                data-menu-alt="Menu CH 03 Bali"
+                data-menu-mode="full"
+                data-menu-layout="culture"
+                data-culture="bali"
+                aria-label="Pilih CH 03 Bali"
+                aria-pressed="false"
+              >
+                <img src="assets/menu-bali.png" alt="CH 03 Bali" />
+              </button>
+              <button
+                class="channel-button"
+                type="button"
+                data-channel="CH 04"
+                data-menu-src="assets/bg-papua.png"
+                data-menu-alt="Menu CH 04 Papua"
+                data-menu-mode="full"
+                data-menu-layout="culture"
+                data-culture="papua"
+                aria-label="Pilih CH 04 Papua"
+                aria-pressed="false"
+              >
+                <img src="assets/menu-papua.png" alt="CH 04 Papua" />
+              </button>
+              <button
+                class="channel-button"
+                type="button"
+                data-channel="CH 05"
+                data-menu-src="assets/bg-jawa-tengah.png"
+                data-menu-alt="Menu CH 05 Jawa Tengah"
+                data-menu-mode="full"
+                data-menu-layout="culture"
+                data-culture="jawa-tengah"
+                aria-label="Pilih CH 05 Jawa Tengah"
+                aria-pressed="false"
+              >
+                <img
+                  src="assets/menu-jawa-tengah.png"
+                  alt="CH 05 Jawa Tengah"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-view page-view--menu" id="menu-view" hidden>
+        <div class="image-stage image-stage--menu">
+          <div class="menu-canvas">
+            <img
+              class="menu-image"
+              id="menu-image"
+              src=""
+              alt=""
+            />
+            <div class="sumatra-menu" id="sumatra-menu" hidden>
+              <div class="culture-menu-artboard">
+                <img
+                  class="culture-menu-background"
+                  id="culture-menu-background"
+                  src="assets/bg-sumatra-barat.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <div
+                  class="culture-card-grid"
+                  id="culture-card-grid"
+                  role="group"
+                  aria-label="Pilihan budaya Sumatera Barat"
+                ></div>
+              </div>
+              <div
+                class="culture-popup-overlay"
+                id="culture-popup-overlay"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Menu popup Sumatera Barat"
+                hidden
+              >
+                <div class="culture-popup-backdrop" aria-hidden="true"></div>
+                <div class="culture-popup-dialog">
+                  <img
+                    class="culture-menu-popup"
+                    id="culture-menu-popup"
+                    src="assets/menu-sumatra-barat-popup.png"
+                    alt="Menu popup Sumatera Barat"
+                  />
+                  <h2 class="culture-popup-title" id="culture-popup-title">
+                    Rumah Gadang
+                  </h2>
+                  <p
+                    class="culture-popup-description"
+                    id="culture-popup-description"
+                  >
+                    Rumah Gadang memiliki atap melengkung dan runcing seperti tanduk kerbau, menjadi ciri khas masyarakat Minangkabau.
+                  </p>
+                  <button
+                    class="culture-popup-close"
+                    id="culture-popup-close"
+                    type="button"
+                    aria-label="Tutup menu popup"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="back-button"
+            id="back-button"
+            type="button"
+            aria-label="Kembali ke pilih kanal"
+          >
+            Kembali
+          </button>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

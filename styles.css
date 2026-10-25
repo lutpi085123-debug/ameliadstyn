@@ -1,0 +1,697 @@
+:root {
+  color-scheme: light;
+  background: #78c9ec;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: #78c9ec;
+}
+
+.website-screen {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+}
+
+.image-stage {
+  position: relative;
+  margin: 0 auto;
+}
+
+.page-view {
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  width: 100%;
+}
+
+.page-view[hidden] {
+  display: none;
+}
+
+.image-stage--opening {
+  width: min(100%, calc(100svh * 16 / 9));
+  aspect-ratio: 16 / 9;
+}
+
+.opening-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.image-stage--channels {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100svh;
+}
+
+.channel-canvas {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: max(100vw, calc(100svh * 3 / 2));
+  height: max(100svh, calc(100vw * 2 / 3));
+  transform: translateX(-50%);
+}
+
+.channel-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.channel-grid {
+  position: absolute;
+  top: 27%;
+  left: 22%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2% 1.5%;
+  width: 56%;
+  height: 44%;
+}
+
+.channel-button {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: filter 160ms ease, transform 160ms ease;
+}
+
+.channel-button:nth-child(1) {
+  grid-column: 1 / span 2;
+}
+
+.channel-button:nth-child(2) {
+  grid-column: 3 / span 2;
+}
+
+.channel-button:nth-child(3) {
+  grid-column: 5 / span 2;
+}
+
+.channel-button:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.channel-button:nth-child(5) {
+  grid-column: 4 / span 2;
+}
+
+.channel-button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.channel-button:hover {
+  filter: brightness(1.1) drop-shadow(0 0.3rem 0.25rem rgb(0 0 0 / 30%));
+  transform: scale(1.04);
+}
+
+.channel-button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+  border-radius: 1rem;
+}
+
+.channel-button[aria-pressed="true"] {
+  filter: brightness(1.12) drop-shadow(0 0.3rem 0.3rem rgb(0 0 0 / 38%));
+  transform: scale(1.04);
+}
+
+.image-stage--menu {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100svh;
+}
+
+.menu-canvas {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: grid;
+  width: 100vw;
+  height: 100svh;
+  place-items: center;
+  transform: translateX(-50%);
+}
+
+.menu-image {
+  display: block;
+  width: min(90vw, 747px);
+  height: min(86svh, 556px);
+  object-fit: contain;
+  object-position: center;
+}
+
+.sumatra-menu {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.sumatra-menu[hidden] {
+  display: none;
+}
+
+.culture-menu-artboard {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: max(100vw, calc(100svh * 3 / 2));
+  height: max(100svh, calc(100vw * 2 / 3));
+  transform: translateX(-50%);
+}
+
+.culture-menu-background,
+.culture-menu-popup {
+  position: absolute;
+  display: block;
+}
+
+.culture-menu-background {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.culture-card-grid {
+  position: absolute;
+  top: 37%;
+  left: 2%;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.5%;
+  width: 96%;
+  align-items: start;
+}
+
+.culture-card-button {
+  min-width: 0;
+  aspect-ratio: 0.66;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: filter 160ms ease, transform 160ms ease;
+}
+
+.culture-card-button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  transform: translateY(var(--card-icon-shift, 0));
+}
+
+/* Setiap asset memiliki ruang transparan atas yang berbeda. Kompensasi per
+   menu ini membuat bagian ikon pada lima kartu berada pada satu garis. */
+.culture-menu-artboard[data-culture="sumatra"]
+  .culture-card-button:nth-child(1) {
+  --card-icon-shift: 2.6%;
+}
+
+.culture-menu-artboard[data-culture="sumatra"]
+  .culture-card-button:nth-child(2) {
+  --card-icon-shift: 3.1%;
+}
+
+.culture-menu-artboard[data-culture="sumatra"]
+  .culture-card-button:nth-child(4),
+.culture-menu-artboard[data-culture="sumatra"]
+  .culture-card-button:nth-child(5) {
+  --card-icon-shift: 5.1%;
+}
+
+.culture-menu-artboard[data-culture="jawa-barat"]
+  .culture-card-button:nth-child(1) {
+  --card-icon-shift: 0.7%;
+}
+
+.culture-menu-artboard[data-culture="jawa-barat"]
+  .culture-card-button:nth-child(5) {
+  --card-icon-shift: 0.3%;
+}
+
+.culture-menu-artboard[data-culture="bali"]
+  .culture-card-button:nth-child(1) {
+  --card-icon-shift: 0.15%;
+}
+
+.culture-menu-artboard[data-culture="bali"]
+  .culture-card-button:nth-child(2) {
+  --card-icon-shift: 0.72%;
+}
+
+.culture-menu-artboard[data-culture="bali"]
+  .culture-card-button:nth-child(3) {
+  --card-icon-shift: 0;
+}
+
+.culture-menu-artboard[data-culture="bali"]
+  .culture-card-button:nth-child(4) {
+  --card-icon-shift: 0.15%;
+}
+
+.culture-menu-artboard[data-culture="bali"]
+  .culture-card-button:nth-child(5) {
+  --card-icon-shift: 0.57%;
+}
+
+.culture-menu-artboard[data-culture="papua"]
+  .culture-card-button:nth-child(1) {
+  --card-icon-shift: 3.39%;
+}
+
+.culture-menu-artboard[data-culture="papua"]
+  .culture-card-button:nth-child(2) {
+  --card-icon-shift: 2.66%;
+}
+
+.culture-menu-artboard[data-culture="papua"]
+  .culture-card-button:nth-child(3) {
+  --card-icon-shift: 3.25%;
+}
+
+.culture-menu-artboard[data-culture="papua"]
+  .culture-card-button:nth-child(4) {
+  --card-icon-shift: 0;
+}
+
+.culture-menu-artboard[data-culture="papua"]
+  .culture-card-button:nth-child(5) {
+  --card-icon-shift: 1.03%;
+}
+
+.culture-menu-artboard[data-culture="jawa-tengah"]
+  .culture-card-button:nth-child(1),
+.culture-menu-artboard[data-culture="jawa-tengah"]
+  .culture-card-button:nth-child(2) {
+  --card-icon-shift: 0.47%;
+}
+
+.culture-menu-artboard[data-culture="jawa-tengah"]
+  .culture-card-button:nth-child(3),
+.culture-menu-artboard[data-culture="jawa-tengah"]
+  .culture-card-button:nth-child(4) {
+  --card-icon-shift: 0.62%;
+}
+
+.culture-card-button:hover {
+  filter: brightness(1.08) drop-shadow(0 0.45rem 0.35rem rgb(0 0 0 / 35%));
+  transform: translateY(-0.35rem) scale(1.035);
+}
+
+.culture-card-button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+  border-radius: 1rem;
+}
+
+.culture-popup-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 0;
+}
+
+.culture-popup-overlay[hidden] {
+  display: none;
+}
+
+.culture-popup-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 68%);
+  pointer-events: none;
+}
+
+.culture-popup-dialog {
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+  height: 100svh;
+  margin: 0;
+  filter: drop-shadow(0 1rem 1.5rem rgb(0 0 0 / 42%));
+}
+
+.culture-popup-dialog .culture-menu-popup {
+  position: static;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.culture-popup-title {
+  position: absolute;
+  top: 28%;
+  left: 53%;
+  display: grid;
+  width: clamp(11rem, 36vw, 28rem);
+  height: clamp(3.25rem, 7vw, 5rem);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.25em 0.75em;
+  place-items: center;
+  overflow: hidden;
+  border: 3px solid #7d2f13;
+  border-radius: 0.45em;
+  color: #5d240f;
+  background: linear-gradient(180deg, #fff1a6 0%, #f5bd4a 100%);
+  box-shadow: 0 0.2rem 0 #8a3d18, 0 0.3rem 0.7rem rgb(0 0 0 / 32%);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 2.7vw, 2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  text-wrap: balance;
+  transform: translateX(-50%);
+}
+
+.culture-popup-title--long {
+  font-size: clamp(0.75rem, 1.8vw, 1.35rem);
+}
+
+.culture-popup-description {
+  position: absolute;
+  top: 39%;
+  left: 41%;
+  width: 39%;
+  height: 43%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: clamp(0.6rem, 1.5vw, 1.5rem);
+  overflow: auto;
+  color: #4f2a19;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.95rem, 2.2vw, 2rem);
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+/* ================================================================
+   PENGATURAN POPUP PER MENU
+
+   Edit nilai di dalam blok menu yang diinginkan untuk mengubah posisi
+   dan ukuran judul maupun keterangannya secara terpisah.
+   ================================================================ */
+
+/* ======================= SUMATERA BARAT ======================= */
+.culture-popup-overlay[data-culture="sumatra"] .culture-popup-title {
+  top: 28%;
+  left: 53%;
+  width: clamp(11rem, 36vw, 28rem);
+  height: clamp(3.25rem, 7vw, 5rem);
+  padding: 0.25em 0.75em;
+  font-size: clamp(1rem, 2.7vw, 2rem);
+}
+
+.culture-popup-overlay[data-culture="sumatra"]
+  .culture-popup-description {
+  top: 39%;
+  left: 41%;
+  width: 39%;
+  height: 43%;
+  padding: clamp(0.6rem, 1.5vw, 1.5rem);
+  font-size: clamp(2.6rem, 2.2vw, 2rem);
+}
+
+/* ========================= JAWA BARAT ========================= */
+.culture-popup-overlay[data-culture="jawa-barat"] .culture-popup-title {
+  top: 29%;
+  left: 55%;
+  width: clamp(11rem, 36vw, 28rem);
+  height: clamp(3.25rem, 7vw, 5rem);
+  padding: 0.25em 0.75em;
+  font-size: clamp(1rem, 2.7vw, 2rem);
+}
+
+.culture-popup-overlay[data-culture="jawa-barat"]
+  .culture-popup-description {
+  top: 40%;
+  left: 42%;
+  width: 41%;
+  height: 43%;
+  padding: clamp(0.6rem, 1.5vw, 1.5rem);
+  font-size: clamp(2.6rem, 2.2vw, 2rem);
+}
+
+/* ============================ BALI ============================ */
+.culture-popup-overlay[data-culture="bali"] .culture-popup-title {
+  top: 24%;
+  left: 51.3%;
+  width: clamp(11rem, 36vw, 28rem);
+  height: clamp(3.25rem, 7vw, 5rem);
+  padding: 0.25em 0.75em;
+  font-size: clamp(1rem, 2.7vw, 2rem);
+}
+
+.culture-popup-overlay[data-culture="bali"] .culture-popup-description {
+  top: 34%;
+  left: 35%;
+  width: 45%;
+  height: 46%;
+  padding: clamp(0.6rem, 1.5vw, 1.5rem);
+  font-size: clamp(3rem, 2.2vw, 2rem);
+}
+
+/* ============================ PAPUA =========================== */
+.culture-popup-overlay[data-culture="papua"] .culture-popup-title {
+  top: 30%;
+  left: 52.4%;
+  width: clamp(11rem, 36vw, 28rem);
+  height: clamp(3.25rem, 7vw, 5rem);
+  padding: 0.25em 0.75em;
+  font-size: clamp(1rem, 2.7vw, 2rem);
+}
+
+.culture-popup-overlay[data-culture="papua"] .culture-popup-description {
+  top: 39%;
+  left: 41%;
+  width: 39%;
+  height: 43%;
+  padding: clamp(0.6rem, 1.5vw, 1.5rem);
+  font-size: clamp(2.6rem, 2.2vw, 2rem);
+}
+
+/* ========================= JAWA TENGAH ======================= */
+.culture-popup-overlay[data-culture="jawa-tengah"] .culture-popup-title {
+  top: 31%;
+  left: 52%;
+  width: clamp(11rem, 36vw, 28rem);
+  height: clamp(3.25rem, 7vw, 5rem);
+  padding: 0.25em 0.75em;
+  font-size: clamp(1rem, 2.7vw, 2rem);
+}
+
+.culture-popup-overlay[data-culture="jawa-tengah"]
+  .culture-popup-description {
+  top: 39%;
+  left: 33%;
+  width: 50%;
+  height: 48%;
+  padding: clamp(0.6rem, 1.5vw, 1.5rem);
+  font-size: clamp(3rem, 2.2vw, 2rem);
+}
+
+.culture-popup-close {
+  position: absolute;
+  top: 2%;
+  right: 4%;
+  display: grid;
+  width: clamp(2rem, 4vw, 3rem);
+  height: clamp(2rem, 4vw, 3rem);
+  padding: 0;
+  place-items: center;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  background: rgb(61 25 13 / 88%);
+  box-shadow: 0 0.25rem 0.6rem rgb(0 0 0 / 35%);
+  cursor: pointer;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.culture-popup-close:hover {
+  background: #8d3219;
+  transform: scale(1.08);
+}
+
+.culture-popup-close:focus-visible {
+  outline: 3px solid #ffd35a;
+  outline-offset: 3px;
+}
+
+.page-view--menu.menu-view--full .menu-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.back-button {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  padding: 0.7rem 1.1rem;
+  border: 2px solid rgb(255 255 255 / 85%);
+  border-radius: 999px;
+  color: #fff;
+  background: rgb(42 31 24 / 78%);
+  box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 25%);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.back-button:hover {
+  background: rgb(42 31 24 / 94%);
+  transform: scale(1.04);
+}
+
+.back-button:focus-visible {
+  outline: 3px solid #ffd35a;
+  outline-offset: 3px;
+}
+
+.start-button {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  z-index: 1;
+  width: clamp(7rem, 12vw, 11rem);
+  min-height: 3rem;
+  padding: 0.55rem 1.25rem;
+  border: 3px solid #7d2f13;
+  border-radius: 999px;
+  color: #5d240f;
+  background: linear-gradient(180deg, #ffe994 0%, #f6b83f 100%);
+  box-shadow:
+    0 0.25rem 0 #8a3d18,
+    0 0.45rem 0.8rem rgb(0 0 0 / 28%);
+  cursor: pointer;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+  transition: filter 160ms ease, transform 160ms ease;
+}
+
+.start-button:hover {
+  filter: brightness(1.08);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.start-button:active {
+  box-shadow:
+    0 0.12rem 0 #8a3d18,
+    0 0.25rem 0.5rem rgb(0 0 0 / 28%);
+  transform: translate(-50%, calc(-50% + 0.15rem));
+}
+
+.start-button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.fullscreen-button {
+  position: fixed;
+  z-index: 1;
+  top: 1rem;
+  left: 1rem;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0.65rem;
+  place-items: center;
+  border: 2px solid rgb(255 255 255 / 75%);
+  border-radius: 0.75rem;
+  color: #fff;
+  background: rgb(42 31 24 / 72%);
+  box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 25%);
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.fullscreen-button:hover {
+  background: rgb(42 31 24 / 90%);
+  transform: scale(1.06);
+}
+
+.fullscreen-button:focus-visible {
+  outline: 3px solid #ffd35a;
+  outline-offset: 3px;
+}
+
+.fullscreen-icon {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.fullscreen-icon--compress {
+  display: none;
+}
+
+.fullscreen-button[aria-pressed="true"] .fullscreen-icon--expand {
+  display: none;
+}
+
+.fullscreen-button[aria-pressed="true"] .fullscreen-icon--compress {
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .fullscreen-button {
+    top: 0.75rem;
+    left: 0.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .back-button {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}
