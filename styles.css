@@ -788,8 +788,15 @@ body {
 /* Ukuran font HP landscape tetap kecil, tetapi deskripsinya diturunkan
    sedikit agar posisinya lebih nyaman dibaca. */
 @media (orientation: landscape) and (max-height: 600px) {
-  .culture-popup-description {
-    top: 46%;
+  .culture-popup-overlay[data-culture="sumatra"]
+    .culture-popup-description,
+  .culture-popup-overlay[data-culture="jawa-barat"]
+    .culture-popup-description,
+  .culture-popup-overlay[data-culture="bali"] .culture-popup-description,
+  .culture-popup-overlay[data-culture="papua"]
+    .culture-popup-description,
+  .culture-popup-overlay[data-culture="jawa-tengah"]
+    .culture-popup-description {
     font-size: clamp(0.95rem, 1.3vw, 1.2rem);
   }
 
